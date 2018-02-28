@@ -29,3 +29,5 @@ SELECT nombre FROM cliente WHERE poliza='1144' UNION SELECT marca FROM auto WHER
 SELECT auto.placas,auto.marca,accidente.cantPagar FROM auto,accidente WHERE auto.placas = "SDFE" AND accidente.placas="SDFE";
 
 UPDATE auto SET poliza='1122',marca='Nissan',modelo='Fiesta',año='2018',placas='SDFP',color='Azul' WHERE placas='SDFP';
+
+respuesta de git
