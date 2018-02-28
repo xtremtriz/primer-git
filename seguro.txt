@@ -1,0 +1,31 @@
+CREATE TABLE Cliente(poliza INTEGER NOT NULL,
+		nombre VARCHAR(15) NOT NULL,
+		direccion VARCHAR(30) NOT NULL,
+		telefono INTEGER NOT NULL,
+		edoCivil VARCHAR(10) NOT NULL,
+		PRIMARY KEY(poliza),
+		unique (telefono));
+
+CREATE TABLE Auto(poliza INTEGER NOT NULL,
+		marca VARCHAR(10) NOT NULL,
+		modelo VARCHAR(10) NOT NULL,
+		año INTEGER NOT NULL,
+		placas VARCHAR(10) NOT NULL,
+		color VARCHAR(10) NOT NULL,
+		PRIMARY KEY(placas),
+		FOREIGN KEY(poliza) REFERENCES Cliente(poliza));
+
+CREATE TABLE Accidente(placas VARCHAR(10) NOT NULL,
+		cantPagar INTEGER NOT NULL,
+		fecha DATE NOT NULL,		
+		tipoAccidente VARCHAR(15) NOT NULL,
+		FOREIGN KEY(placas) REFERENCES Auto(placas));
+
+
+SELECT auto.poliza,cliente.nombre,auto.marca FROM auto,cliente WHERE auto.poliza = "1122" AND cliente.poliza="1122";
+
+SELECT nombre FROM cliente WHERE poliza='1144' UNION SELECT marca FROM auto WHERE poliza='1144';
+
+SELECT auto.placas,auto.marca,accidente.cantPagar FROM auto,accidente WHERE auto.placas = "SDFE" AND accidente.placas="SDFE";
+
+UPDATE auto SET poliza='1122',marca='Nissan',modelo='Fiesta',año='2018',placas='SDFP',color='Azul' WHERE placas='SDFP';
